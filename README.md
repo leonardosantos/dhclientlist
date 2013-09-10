@@ -1,7 +1,7 @@
 DHClientList
 ============
 
-DHClientList is a tool to get the current client list of a DHCP server. With it one can check who is connected to the local network. To do this one must provide the DHCP server address (IP in local network and port), username and password.
+DHClientList is a tool to get the current client list of a DHCP server. With it one can check who is connected to the local network. To do this one must provide the DHCP server address (IP in local network and port), username and password. The resulting list items contains the host name, MAC address, IP and lease time.
 
 ## Installation ##
 	pip install dhclientlist

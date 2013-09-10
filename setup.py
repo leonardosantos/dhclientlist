@@ -87,7 +87,10 @@ setup(
     cmdclass={'install_scripts': my_install_scripts},
     url='https://github.com/leonardosantos/dhclientlist',
     license='LICENSE.txt',
-    description='Tool to get the current client list of a DHCP server.',
+    description=('DHClientList is a tool to get the current client list of a DHCP server. '
+                 'With it one can check who is connected to the local network. '
+                 'To do this one must provide the DHCP server address (IP in local network and port), username and password. '
+                 'The resulting list items contains the host name, MAC address, IP and lease time.'),
     long_description=open('README.md').read(),
     install_requires=[
         "texttable==0.8.1",
