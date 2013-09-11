@@ -26,7 +26,34 @@ DHClientList is a tool to get the current client list of a DHCP server. With it 
       -f {json,texttable}, --format {json,texttable}
                             the format of the output list. (default: texttable)
 
-### Python: ###
+### HTTP(S) Server: ###
+	
+	usage: dhclientlist serve [-h] [-d DRIVERNAME] [-a ADDRESS] [-u USERNAME]
+	                          [-p PASSWORD] [--http-username HTTP_USERNAME]
+	                          [--http-password HTTP_PASSWORD] [-i] [--debug]
+	                          port
+	
+	positional arguments:
+	  port                  port that the dhclientlist HTTP(S) server will bind
+	
+	optional arguments:
+	  -h, --help            show this help message and exit
+	  -d DRIVERNAME, --driver DRIVERNAME
+	                        specify a driver to be used
+	  -a ADDRESS, --address ADDRESS
+	                        local dhcp server's address. (default: 192.168.0.1:80)
+	  -u USERNAME, --username USERNAME
+	                        local dhcp server's username. (default: admin)
+	  -p PASSWORD, --password PASSWORD
+	                        local dhcp server's password.
+	  --http-username HTTP_USERNAME
+	                        dhclientlist server username.
+	  --http-password HTTP_PASSWORD
+	                        dhclientlist server password.
+	  -i, --insecure        use HTTP instead of HTTPS
+	  --debug               runs the server in debug mode
+
+### Python lib: ###
 
 	import dhclientlist
 	dhclientlist.get(address, username, password)  # optionally the 4th parameter: driver
