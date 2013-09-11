@@ -78,7 +78,7 @@ for dirpath, dirnames, filenames in os.walk(project_dir):
 
 setup(
     name='dhclientlist',
-    version='0.0.3',
+    version='0.0.4',
     author='Leonardo Santos',
     author_email='lsantos@inoa.com.br',
     packages=packages,

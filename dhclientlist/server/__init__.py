@@ -2,11 +2,10 @@
 import os
 try:
     from OpenSSL import SSL
-    from .security import generate_certificate, generate_key
+    from security import generate_certificate, generate_key
     SECURITY_AVAILBLE = True
 except ImportError:
     SECURITY_AVAILBLE = False
-    print "HTTPS server mode unavailble due to missing pyOpenSSL==0.13 library. Please install it to enable HTTPS server mode."
 
 
 def serve(app, port, secure=True, debug=False):
@@ -22,6 +21,8 @@ def serve(app, port, secure=True, debug=False):
         context.use_privatekey_file(key_fn)
         context.use_certificate_file(cert_fn)
         kwargs['ssl_context'] = context
+    else:
+        print "HTTPS server mode unavailble due to missing pyOpenSSL==0.13 library. Please install it to enable HTTPS server mode."
 
     app.run(**kwargs)
 
