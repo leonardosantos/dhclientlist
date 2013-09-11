@@ -78,7 +78,7 @@ for dirpath, dirnames, filenames in os.walk(project_dir):
 
 setup(
     name='dhclientlist',
-    version='0.0.2',
+    version='0.0.3',
     author='Leonardo Santos',
     author_email='lsantos@inoa.com.br',
     packages=packages,
@@ -95,8 +95,7 @@ setup(
     install_requires=[
         "texttable==0.8.1",
         "requests==1.2.3",
-        "Flask==0.10.1",
-        "pyOpenSSL==0.13"
+        "Flask==0.10.1"
     ],
     classifiers=[
         "Development Status :: 4 - Beta",

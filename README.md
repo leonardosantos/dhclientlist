@@ -6,6 +6,8 @@ DHClientList is a tool to get the current client list of a DHCP server. With it 
 ## Installation ##
 	pip install dhclientlist
 
+**Note:** The pyOpenSSL==0.13 library is required to enable the HTTPS server mode.
+
 ## Usage ##
 
 ### Command-line: ###

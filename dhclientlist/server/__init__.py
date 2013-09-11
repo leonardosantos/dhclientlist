@@ -1,7 +1,12 @@
 #coding:utf-8
 import os
-from OpenSSL import SSL
-from .security import generate_certificate, generate_key
+try:
+    from OpenSSL import SSL
+    from .security import generate_certificate, generate_key
+    SECURITY_AVAILBLE = True
+except ImportError:
+    SECURITY_AVAILBLE = False
+    print "HTTPS server mode unavailble due to missing pyOpenSSL==0.13 library. Please install it to enable HTTPS server mode."
 
 
 def serve(app, port, secure=True, debug=False):
@@ -9,7 +14,7 @@ def serve(app, port, secure=True, debug=False):
               'port': int(port),
               'debug': debug}
 
-    if secure:
+    if secure and SECURITY_AVAILBLE:
         key_fd, key_fn, key = generate_key()
         cert_fd, cert_fn = generate_certificate(key)
 
@@ -20,7 +25,7 @@ def serve(app, port, secure=True, debug=False):
 
     app.run(**kwargs)
 
-    if secure:
+    if secure and SECURITY_AVAILBLE:
         os.close(cert_fd)
         os.remove(cert_fn)
 
