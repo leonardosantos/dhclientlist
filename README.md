@@ -35,9 +35,9 @@ DHClientList is a tool to get the current client list of a DHCP server. With it 
 	 
 The connection with DHCP server is made by a _driver_, a python module inside the **dhclientlist.drivers** package (or in any of its sub-packages) that has a get(address, username, password) function which return a list of dicts; each dict containing the following key-value pairs:
 	
-	("name", name_str)    # name of the guest connected to the dhcp server
-	("mac", mac_str)      # MAC address of the guest connected to the dhcp server
-	("ip", ip_str)        # IP address of the guest connected to the dhcp server
-	("lease", lease_str)  # time in the format hh:mm:ss until this registry is updated in the dhcp server
+	("name", name_str),    # name of the guest connected to the dhcp server
+	("mac", mac_str),      # MAC address of the guest connected to the dhcp server
+	("ip", ip_str),        # IP address of the guest connected to the dhcp server
+	("lease", lease_str)   # time in the format hh:mm:ss until this registry is updated in the dhcp server
 
 The **dhclientlist.util.find_driver** function will try to find the appropriate driver for the local DHCP server. However, the number of drivers is quite small at the moment, and dhclientlist may not succeed with the local DHCP server. In this case, one is welcome to contribute by forking this project and developing a driver to the local DHCP server.
