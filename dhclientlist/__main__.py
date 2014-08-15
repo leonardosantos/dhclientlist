@@ -3,14 +3,10 @@
 
 from __init__ import get
 import server, server.application
-import texttable
 import argparse
 import json
 import util
 import sys
-
-
-texttable_deco = texttable.Texttable.HEADER + texttable.Texttable.BORDER
 
 
 class ArgumentDefaultsVoidHelpFormatter(argparse.ArgumentDefaultsHelpFormatter):
@@ -55,8 +51,8 @@ parser_server.add_argument("--debug", dest="debug", action="store_true", help="r
 args = parser.parse_args()
 
 if args.command == 'list-drivers':
-    table = texttable.Texttable()
-    table.set_deco(texttable_deco)
+    table = util.texttable.Texttable()
+    table.set_deco(util.texttable_deco)
     table.add_rows([["All drivers"]] + [[driver_name.replace('drivers.', '')] for driver_name in util.list_all_drivers()])
     print table.draw()
 
@@ -77,12 +73,6 @@ elif args.command == 'print':
         if args.format == "json":
             print json.dumps(result)
         elif args.format == "texttable":
-            table = texttable.Texttable()
-            table.set_deco(texttable_deco)
-            cols = result[0].keys()
-            cols.sort()
-            cols.reverse()
-            table.add_rows([[col.upper() for col in cols]] + [[row[cel] for cel in cols] for row in result])
-            print table.draw()
+            print util.to_texttable(result)
     else:
         print "No results found."

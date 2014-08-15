@@ -3,6 +3,10 @@ import os.path
 import glob
 import inspect
 import drivers
+import texttable
+
+
+texttable_deco = texttable.Texttable.HEADER + texttable.Texttable.BORDER
 
 IMPORT_BASE = os.path.basename(os.path.dirname(__file__))
 try:
@@ -66,3 +70,13 @@ def drivername_to_module(drivername):
         return __import__(drivername,  fromlist=['.'.join(drivername.split('.')[:-1])])
     except ImportError:
         raise UnknownDriver("Unable to find driver.")
+
+
+def to_texttable(result):
+    table = texttable.Texttable()
+    table.set_deco(texttable_deco)
+    cols = result[0].keys()
+    cols.sort()
+    cols.reverse()
+    table.add_rows([[col.upper() for col in cols]] + [[row[cel] for cel in cols] for row in result])
+    return table.draw()

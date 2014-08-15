@@ -9,6 +9,8 @@ except ImportError:
 
 
 def serve(app, port, secure=True, debug=False):
+    from werkzeug.serving import run_simple
+
     kwargs = {'host': '0.0.0.0',
               'port': int(port),
               'debug': debug}
@@ -24,7 +26,7 @@ def serve(app, port, secure=True, debug=False):
     else:
         print "HTTPS server mode unavailble due to missing pyOpenSSL==0.13 library. Please install it to enable HTTPS server mode."
 
-    app.run(**kwargs)
+    run_simple(kwargs['host'], kwargs['port'], app, use_debugger=kwargs['debug'], use_reloader=True)
 
     if secure and SECURITY_AVAILBLE:
         os.close(cert_fd)
