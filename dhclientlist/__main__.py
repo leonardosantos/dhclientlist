@@ -44,7 +44,6 @@ parser_server.add_argument("port", help="port that the dhclientlist HTTP(S) serv
 add_common_arguments(parser_server)
 parser_server.add_argument("--http-username", dest="http_username", help="dhclientlist server username.")
 parser_server.add_argument("--http-password", dest="http_password", help="dhclientlist server password.")
-parser_server.add_argument("-i", "--insecure", dest="insecure", action="store_true", help="use HTTP instead of HTTPS")
 parser_server.add_argument("--debug", dest="debug", action="store_true", help="runs the server in debug mode")
 
 
@@ -60,7 +59,7 @@ elif args.command == 'serve':
     server.serve(server.application.build(get, args.address, args.username, args.password,
                                           util.drivername_to_module(args.drivername),
                                           args.http_username, args.http_password),
-                 args.port, not args.insecure, args.debug)
+                 args.port, args.debug)
 
 elif args.command == 'print':
     try:

@@ -1,5 +1,5 @@
-from distutils.core import setup
-from distutils.command.install_scripts import install_scripts
+from setuptools import setup
+from setuptools.command.install_scripts import install_scripts
 from os.path import join as pjoin, splitext, split as psplit
 from distutils import log
 import os
@@ -78,7 +78,7 @@ for dirpath, dirnames, filenames in os.walk(project_dir):
 
 setup(
     name='dhclientlist',
-    version='0.0.5',
+    version='0.0.6',
     author='Leonardo Santos',
     author_email='lsantos@inoa.com.br',
     packages=packages,
