@@ -95,7 +95,7 @@ setup(
     install_requires=[
         "texttable==0.8.1",
         "requests==1.2.3",
-        "Werkzeug==0.9.6"
+        "Werkzeug==0.15.3"
     ],
     classifiers=[
         "Development Status :: 4 - Beta",
