@@ -94,7 +94,7 @@ setup(
     long_description=open('README.md').read(),
     install_requires=[
         "texttable==0.8.1",
-        "requests==1.2.3",
+        "requests==2.20.0",
         "Werkzeug==0.9.6"
     ],
     classifiers=[
